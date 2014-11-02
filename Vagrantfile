@@ -22,6 +22,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.customize ["modifyvm", :id, "--memory", 512]
       v.customize ["modifyvm", :id, "--name", app_config["project_name"]]
   end
-  
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "demo.yml"
+    ansible.inventory_path = "provisioning/hosts"
+    ansible.limit = "all" #we can specify e.g. only one host
+    ansible.verbose = "vvv"
+  end
   
 end
