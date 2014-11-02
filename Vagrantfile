@@ -24,10 +24,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "demo.yml"
+    ansible.playbook = "provisioning/site.yml"
     ansible.inventory_path = "provisioning/hosts"
-    ansible.limit = "all" #we can specify e.g. only one host
-    ansible.verbose = "vvv"
+    ansible.limit = 'all'
   end
   
 end
