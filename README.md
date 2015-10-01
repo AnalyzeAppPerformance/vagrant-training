@@ -1,7 +1,13 @@
-Przydante linki:
 
-# Vagrant
+# [Vagrant](https://vagrantup.com)
+
+Przydante linki:
+* Vagrant [https://vagrantup.com](https://vagrantup.com)
+* Dokumentacja [https://docs.vagrantup.com](https://docs.vagrantup.com)
+
+
 ### Synchronizacja plików
+
 *  Plugin dla windowsiarzy - NFS https://github.com/winnfsd/vagrant-winnfsd, pozwala ustawić typ synchronizacji "nfs", dzięki czemu działa to płynniej :)
 *  Automatyczna zmiana właściciela plików np na ``www-data`` https://github.com/gael-ian/vagrant-bindfs i przykład wpisu do ``Vagrantfile``
 
@@ -9,7 +15,7 @@ Przydante linki:
 config.bindfs.bind_folder "/var/www/your-website", "/var/www/your-website", user: 'www-data', group: 'www-data'
 ```
 
-3. Poprawka dla brakującego ansible na windowsy:
+* Poprawka dla brakującego ansible na windowsy:
 
 ```
 v.vm.provision "shell",
