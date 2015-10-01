@@ -2,28 +2,31 @@ Przydante linki:
 
 # Vagrant
 ### Synchronizacja plików
-1. Plugin dla windowsiarzy - NFS https://github.com/winnfsd/vagrant-winnfsd
+1. Plugin dla windowsiarzy - NFS https://github.com/winnfsd/vagrant-winnfsd, pozwala ustawić typ synchronizacji "nfs", dzięki czemu działa to płynniej :)
 2. Automatyczna zmiana właściciela plików np na ``www-data`` https://github.com/gael-ian/vagrant-bindfs i przykład wpisu do ``Vagrantfile``
-```ruby
+
+```
 config.bindfs.bind_folder "/var/www/your-website", "/var/www/your-website", user: 'www-data', group: 'www-data'
 ```
+
 3. Poprawka dla brakującego ansible na windowsy:
-```ruby
+
+```
 v.vm.provision "shell",
-                inline: "
-                  sudo apt-get --yes install software-properties-common;
-                  sudo apt-get --yes install python-pip;
-                  sudo apt-add-repository --yes ppa:ansible/ansible;
-                  sudo apt-get --yes update ;
-                  sudo apt-get --yes install ansible"
-        v.vm.provision "shell",
-              inline: "
-                  set -x;
-                  cp -R /var/www/" + app_config["project_name"] + "/vagrant ~/;
-                  chmod -x ~/vagrant/provisioning/hosts;
-                  cd ~/vagrant/provisioning;
-                  ansible-playbook -i hosts site.yml;
-                  "
+    inline: "
+        sudo apt-get --yes install software-properties-common;
+        sudo apt-get --yes install python-pip;
+        sudo apt-add-repository --yes ppa:ansible/ansible;
+        sudo apt-get --yes update ;
+        sudo apt-get --yes install ansible"
+v.vm.provision "shell",
+    inline: "
+        set -x;
+        cp -R /var/www/" + app_config["project_name"] + "/vagrant ~/;
+        chmod -x ~/vagrant/provisioning/hosts;
+        cd ~/vagrant/provisioning;
+        ansible-playbook -i hosts site.yml;
+    "
 ```
 
 # Ansible
