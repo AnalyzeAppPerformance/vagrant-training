@@ -11,3 +11,5 @@
     - apache
     - mysql
     - php
+    - symfony2
+    - composer
